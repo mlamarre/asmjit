@@ -29,15 +29,20 @@
 # undef ASMJIT_UNDEF_OVERRIDE
 #endif // ASMJIT_UNDEF_OVERRIDE
 
-// [CLang]
-#if ASMJIT_CC_CLANG
+// [Clang]
+#if ASMJIT_CC_CLANG && !defined(__INTEL_COMPILER)
 # pragma clang diagnostic pop
 #endif // ASMJIT_CC_CLANG
 
 // [GCC]
-#if ASMJIT_CC_GCC
+#if ASMJIT_CC_GCC && !defined(__INTEL_COMPILER)
 # pragma GCC diagnostic pop
 #endif // ASMJIT_CC_GCC
+
+// [Intel]
+#if ASMJIT_CC_INTEL
+# pragma warning(pop)
+#endif
 
 // [MSC]
 #if ASMJIT_CC_MSC

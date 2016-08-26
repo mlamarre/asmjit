@@ -34,8 +34,8 @@
 # define ASMJIT_UNDEF_OVERRIDE
 #endif // !ASMJIT_CC_HAS_OVERRIDE && !override
 
-// [CLang]
-#if ASMJIT_CC_CLANG
+// [Clang]
+#if ASMJIT_CC_CLANG && !defined(__INTEL_COMPILER)
 # pragma clang diagnostic push
 # pragma clang diagnostic ignored "-Wunnamed-type-template-args"
 #endif // ASMJIT_CC_CLANG
@@ -45,6 +45,12 @@
 # pragma GCC diagnostic push
 # pragma GCC diagnostic warning "-Winline"
 #endif // ASMJIT_CC_GCC
+
+// [Intel]
+#if ASMJIT_CC_INTEL
+# pragma warning(push)
+# pragma warning(disable: 114)
+#endif
 
 // [MSC]
 #if ASMJIT_CC_MSC

@@ -111,7 +111,7 @@ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
   endif()
 endif()
 
-if("${CMAKE_CXX_COMPILER_ID}" MATCHES "^(GNU|Clang)$")
+if("${CMAKE_CXX_COMPILER_ID}" MATCHES "^(GNU|Clang|Intel)$")
   # Keep only the first option detected.
   np_detect_options(ASMJIT_CC_OPTIONS
     "-std=c++14"

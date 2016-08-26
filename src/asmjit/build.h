@@ -318,11 +318,18 @@
 //
 // \def ASMJIT_CC_MINGW
 // Defined to 32 or 64 in case this is a MINGW, otherwise 0.
+//
+// \def ASMJIT_CC_INTEL
+// True if the detected C++ compiler is Intel (contains normalized ICC version).
+// The Intel compiler is special since it emulates the behavior of other compilers
+// (MSC/GCC/Clang/...) depending on the platform. Thus, both ASMJIT_CC_GCC and
+// ASMJIT_CC_INTEL can e.g. be active at the same time.
 
 #define ASMJIT_CC_CLANG 0
 #define ASMJIT_CC_CODEGEAR 0
 #define ASMJIT_CC_GCC 0
 #define ASMJIT_CC_MSC 0
+#define ASMJIT_CC_INTEL 0
 
 #if defined(__CODEGEARC__)
 # undef  ASMJIT_CC_CODEGEAR
@@ -345,6 +352,11 @@
 # endif
 #else
 # error "[asmjit] Unable to detect the C/C++ compiler."
+#endif
+
+#if defined(__INTEL_COMPILER)
+#  undef ASMJIT_CC_INTEL
+#  define ASMJIT_CC_INTEL __INTEL_COMPILER
 #endif
 
 #if ASMJIT_CC_GCC && defined(__GXX_EXPERIMENTAL_CXX0X__)
@@ -754,7 +766,7 @@
 // [@CC_FALLTHROUGH{@]
 // \def ASMJIT_FALLTHROUGH
 // The code falls through annotation (switch / case).
-#if ASMJIT_CC_CLANG && __cplusplus >= 201103L
+#if ASMJIT_CC_CLANG && __cplusplus >= 201103L && !ASMJIT_CC_INTEL
 # define ASMJIT_FALLTHROUGH [[clang::fallthrough]]
 #else
 # define ASMJIT_FALLTHROUGH (void)0
