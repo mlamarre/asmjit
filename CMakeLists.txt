@@ -61,8 +61,8 @@ if(NOT ASMJIT_DIR)
   set(ASMJIT_DIR ${CMAKE_CURRENT_LIST_DIR})
 endif()
 
-message("-- [asmjit] ${ASMJIT_SIGNATURE}")
-message("-- [asmjit] ASMJIT_DIR=${ASMJIT_DIR}")
+message(STATUS "-- [asmjit] ${ASMJIT_SIGNATURE}")
+message(STATUS "-- [asmjit] ASMJIT_DIR=${ASMJIT_DIR}")
 
 # =============================================================================
 # [NP-Utilities]
@@ -177,9 +177,9 @@ endif()
 set(ASMJIT_PRIVATE_CFLAGS_DBG ${ASMJIT_CFLAGS} ${ASMJIT_PRIVATE_CFLAGS} ${ASMJIT_PRIVATE_CFLAGS_DBG})
 set(ASMJIT_PRIVATE_CFLAGS_REL ${ASMJIT_CFLAGS} ${ASMJIT_PRIVATE_CFLAGS} ${ASMJIT_PRIVATE_CFLAGS_REL})
 
-message("-- [asmjit] ASMJIT_DEPS=${ASMJIT_DEPS}")
-message("-- [asmjit] ASMJIT_LIBS=${ASMJIT_LIBS}")
-message("-- [asmjit] ASMJIT_CFLAGS=${ASMJIT_CFLAGS}")
+message(STATUS "-- [asmjit] ASMJIT_DEPS=${ASMJIT_DEPS}")
+message(STATUS "-- [asmjit] ASMJIT_LIBS=${ASMJIT_LIBS}")
+message(STATUS "-- [asmjit] ASMJIT_CFLAGS=${ASMJIT_CFLAGS}")
 
 # =============================================================================
 # [AsmJit - Macros]
