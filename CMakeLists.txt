@@ -61,8 +61,8 @@ if(NOT ASMJIT_DIR)
   set(ASMJIT_DIR ${CMAKE_CURRENT_LIST_DIR})
 endif()
 
-message(STATUS "-- [asmjit] ${ASMJIT_SIGNATURE}")
-message(STATUS "-- [asmjit] ASMJIT_DIR=${ASMJIT_DIR}")
+message(STATUS "asmjit: ${ASMJIT_SIGNATURE}")
+message(STATUS "asmjit: ASMJIT_DIR=${ASMJIT_DIR}")
 
 # =============================================================================
 # [NP-Utilities]
@@ -94,14 +94,12 @@ set(ASMJIT_LIBS)                                # Asmjit dependencies with asmji
 # Internal, never use.
 set(ASMJIT_D "-D")                              # Used to define a C/C++ preprocessor parameter (-D or /D).
 set(ASMJIT_PRIVATE_CFLAGS)                      # Compiler flags independent of build type.
-set(ASMJIT_PRIVATE_LFLAGS "")                   # Linker flags used by the library and tests.
 
 set(ASMJIT_PRIVATE_CFLAGS_DBG)                  # Compiler flags used only by debug build.
 set(ASMJIT_PRIVATE_CFLAGS_REL)                  # Compiler flags used only by release build.
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
   set(ASMJIT_D "/D")
-  set(ASMJIT_PRIVATE_LFLAGS "/OPT:REF /OPT:ICF")
 
   list(APPEND ASMJIT_PRIVATE_CFLAGS /GF)
   list(APPEND ASMJIT_PRIVATE_CFLAGS_DBG /GS /GR-)
@@ -177,9 +175,9 @@ endif()
 set(ASMJIT_PRIVATE_CFLAGS_DBG ${ASMJIT_CFLAGS} ${ASMJIT_PRIVATE_CFLAGS} ${ASMJIT_PRIVATE_CFLAGS_DBG})
 set(ASMJIT_PRIVATE_CFLAGS_REL ${ASMJIT_CFLAGS} ${ASMJIT_PRIVATE_CFLAGS} ${ASMJIT_PRIVATE_CFLAGS_REL})
 
-message(STATUS "-- [asmjit] ASMJIT_DEPS=${ASMJIT_DEPS}")
-message(STATUS "-- [asmjit] ASMJIT_LIBS=${ASMJIT_LIBS}")
-message(STATUS "-- [asmjit] ASMJIT_CFLAGS=${ASMJIT_CFLAGS}")
+message(STATUS "asmjit: ASMJIT_DEPS=${ASMJIT_DEPS}")
+message(STATUS "asmjit: ASMJIT_LIBS=${ASMJIT_LIBS}")
+message(STATUS "asmjit: ASMJIT_CFLAGS=${ASMJIT_CFLAGS}")
 
 # =============================================================================
 # [AsmJit - Macros]
@@ -206,7 +204,6 @@ macro(asmjit_add_library _target _src _deps _cflags _cflags_dbg _cflags_rel)
   endif()
 
   target_link_libraries(${_target} ${_deps})
-  set_target_properties(${_target} PROPERTIES LINK_FLAGS "${ASMJIT_PRIVATE_LFLAGS}")
 
   if(CMAKE_BUILD_TYPE)
     if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
@@ -340,7 +337,6 @@ if(NOT ASMJIT_EMBED)
 
     add_executable(asmjit_test_unit ${ASMJIT_SRC} ${ASMJIT_TEST_SRC})
     target_link_libraries(asmjit_test_unit ${ASMJIT_DEPS})
-    set_target_properties(asmjit_test_unit PROPERTIES LINK_FLAGS "${ASMJIT_PRIVATE_LFLAGS}")
 
     if(CMAKE_BUILD_TYPE)
       if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
