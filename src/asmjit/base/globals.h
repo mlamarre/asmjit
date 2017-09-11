@@ -455,7 +455,7 @@ ASMJIT_ENUM(CallConv) {
   kCallConvHostCDecl    = kCallConvHost,
   kCallConvHostStdCall  = kCallConvHost,
   kCallConvHostFastCall = kCallConvHost
-#elif ASMJIT_ARCH_ARM32
+#elif ASMJIT_ARCH_ARM32 || ASMJIT_ARCH_ARM64
 # if defined(__SOFTFP__)
   kCallConvHost         = kCallConvArm32SoftFP,
 # else

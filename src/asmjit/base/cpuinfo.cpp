@@ -183,7 +183,7 @@ static void armDetectCpuInfoOnLinux(CpuInfo* cpuInfo) noexcept {
     { /* HWCAP_CRC32   */ (1 <<  7), CpuInfo::kArmFeatureCRC32     },
     { /* HWCAP_PMULL   */ (1 <<  4), CpuInfo::kArmFeaturePMULL     },
     { /* HWCAP_SHA1    */ (1 <<  5), CpuInfo::kArmFeatureSHA1      },
-    { /* HWCAP_SHA2    */ (1 <<  6), CpuInfo::kArmFeatureSHA256    }
+    { /* HWCAP_SHA2    */ (1 <<  6), CpuInfo::kArmFeatureSHA256    },
     { /* HWCAP_ATOMICS */ (1 <<  8), CpuInfo::kArmFeatureAtomics64 }
   };
   armDetectHWCaps(cpuInfo, AT_HWCAP, hwCapMapping, ASMJIT_ARRAY_SIZE(hwCapMapping));
