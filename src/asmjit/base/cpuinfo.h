@@ -14,6 +14,11 @@
 // [Api-Begin]
 #include "../asmjit_apibegin.h"
 
+#if (__GNUC__ >= 8) && !defined(__clang__)
+#  pragma GCC diagnostic push
+#  pragma GCC diagnostic ignored "-Wclass-memaccess"
+#endif
+
 namespace asmjit {
 
 //! \addtogroup asmjit_base
@@ -368,6 +373,10 @@ public:
 
 // [Api-End]
 #include "../asmjit_apiend.h"
+
+#if (__GNUC__ >= 8) && !defined(__clang__)
+#  pragma GCC diagnostic pop
+#endif
 
 // [Guard]
 #endif // _ASMJIT_BASE_CPUINFO_H
