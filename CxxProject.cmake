@@ -207,20 +207,20 @@ if (NOT __CXX_INCLUDED)
       set(BUILD_TEST "Off")
     endif()
 
-    message(STATUS "-- [${product}]")
-    message(STATUS "   BuildMode=${BUILD_MODE}")
-    message(STATUS "   BuildTest=${BUILD_TEST}")
-    message(STATUS "   ${PRODUCT}_DIR=${${PRODUCT}_DIR}")
-    message(STATUS "   ${PRODUCT}_DEPS=${${PRODUCT}_DEPS}")
-    message(STATUS "   ${PRODUCT}_LIBS=${${PRODUCT}_LIBS}")
-    message(STATUS "   ${PRODUCT}_CFLAGS=${${PRODUCT}_CFLAGS}")
-    message(STATUS "   ${PRODUCT}_SOURCE_DIR=${${PRODUCT}_SOURCE_DIR}")
-    message(STATUS "   ${PRODUCT}_INCLUDE_DIR=${${PRODUCT}_INCLUDE_DIR}")
-    message(STATUS "   ${PRODUCT}_PRIVATE_CFLAGS=")
-    cxx_print_cflags(
-      "${${PRODUCT}_PRIVATE_CFLAGS}"
-      "${${PRODUCT}_PRIVATE_CFLAGS_DBG}"
-      "${${PRODUCT}_PRIVATE_CFLAGS_REL}")
+    #message(STATUS "-- [${product}]")
+    #message(STATUS "   BuildMode=${BUILD_MODE}")
+    #message(STATUS "   BuildTest=${BUILD_TEST}")
+    #message(STATUS "   ${PRODUCT}_DIR=${${PRODUCT}_DIR}")
+    #message(STATUS "   ${PRODUCT}_DEPS=${${PRODUCT}_DEPS}")
+    #message(STATUS "   ${PRODUCT}_LIBS=${${PRODUCT}_LIBS}")
+    #message(STATUS "   ${PRODUCT}_CFLAGS=${${PRODUCT}_CFLAGS}")
+    #message(STATUS "   ${PRODUCT}_SOURCE_DIR=${${PRODUCT}_SOURCE_DIR}")
+    #message(STATUS "   ${PRODUCT}_INCLUDE_DIR=${${PRODUCT}_INCLUDE_DIR}")
+    #message(STATUS "   ${PRODUCT}_PRIVATE_CFLAGS=")
+    #cxx_print_cflags(
+      #"${${PRODUCT}_PRIVATE_CFLAGS}"
+      #"${${PRODUCT}_PRIVATE_CFLAGS_DBG}"
+      #"${${PRODUCT}_PRIVATE_CFLAGS_REL}")
   endfunction()
 
   function(cxx_add_source product out src_dir)
